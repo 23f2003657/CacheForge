@@ -1,0 +1,17 @@
+
+# Compiled executable
+CacheForge
+
+# Build directories
+build/
+cmake-build-*/
+
+# Object files
+*.o
+*.obj
+
+# macOS files
+.DS_Store
+
+# IDE settings
+.vscode/
