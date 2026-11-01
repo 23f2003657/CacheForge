@@ -1,43 +1,12 @@
 #include <iostream>
-#include <unordered_map>
+
 #include <string>
 #include <sstream>
 
+#include "KeyValueStore.h"
 using namespace std;
 
-class KeyValueStore {
 
-private:
-    unordered_map<string,string> storage;
-public:
-    // Constructor
-    KeyValueStore(){
-        cout << "Storage Initialised" << endl;
-    }
-
-    // inserting or updating a key-value pair
-    void set(const string& key, const string& value){
-        storage[key] = value;
-    }
-
-    //retrieving a value
-    bool get(const string& key, string& value){
-        auto it = storage.find(key);
-
-        if (it != storage.end()){
-            value = it->second;
-            return true;
-        }
-
-        return false;
-    }
-
-    // deleting a key value pair
-    bool del(const string& key){
-        return storage.erase(key) > 0; // erase() returns the number of elements removed.
-    }
-
-};
 
 int main() {
 
