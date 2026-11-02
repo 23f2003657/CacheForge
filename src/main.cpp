@@ -29,7 +29,8 @@ int main() {
             break;
         }
         else if (operation =="SET"){
-            iss >> key >> value;
+            iss >> key ;
+            getline(iss>>ws,value);
 
             if (key.empty() || value.empty() ){
                 cout << "Usage: SET <key> <value>" << endl;

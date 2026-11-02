@@ -4,6 +4,14 @@
 
 using namespace std;
 
+KeyValueStore::KeyValueStore() {
+    cout << "Storage initialized!" << endl;
+}
+//// Insert or update a key-value pair
+void KeyValueStore::set(const string& key, const string& value) {
+    storage[key] = value;
+}
+
 bool KeyValueStore::get(const string& key, string& value){
     auto it = storage.find(key);
 
