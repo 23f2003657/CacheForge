@@ -1,35 +1,36 @@
-# CacheForge
+<div align="center">
 
-A Redis-inspired, in-memory key-value store built in C++.
+# ⚡ CacheForge
 
-CacheForge is a learning project focused on understanding how a
-cache/storage engine works internally, while building a practical
-foundation in C++ and backend development.
+**A Redis-inspired in-memory key-value store, built from scratch in C++17.**
 
-## Current Features
+*Learn C++, storage engines, and backend systems by building a cache from the ground up.*
 
-  ------------------------------------------------------------------------------------------
-  Command                 Syntax                                     Description
-  ----------------------- ------------------------------------------ -----------------------
-  `SET`                   `SET <key> <value>`                        Stores a value. Values
-                                                                     can contain spaces.
+<br>
 
-  `GET`                   `GET <key> [key ...]`                      Retrieves one or more
-                                                                     values. Missing keys
-                                                                     return `(nil)`.
+![C++17](https://img.shields.io/badge/C%2B%2B-17-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
+![CMake](https://img.shields.io/badge/CMake-build-064F8C?style=for-the-badge&logo=cmake&logoColor=white)
+![Status](https://img.shields.io/badge/status-in%20development-F59E0B?style=for-the-badge)
+![Progress](https://img.shields.io/badge/milestones-5%20of%209-10B981?style=for-the-badge)
 
-  `DEL`                   `DEL <key> [key ...]`                      Deletes one or more
-                                                                     keys and reports the
-                                                                     number deleted.
+[Features](#-features) · [Quick Start](#-quick-start) · [Roadmap](#-roadmap) · [Structure](#-project-structure) · [Limitations](#-current-limitations)
 
-  `MSET`                  `MSET <key> <value>, <key> <value>, ...`   Stores multiple
-                                                                     key-value pairs in one
-                                                                     command.
-  ------------------------------------------------------------------------------------------
+</div>
 
-Example:
+---
 
-``` text
+## ✨ Features
+
+| Command | Syntax | Description |
+|:--------|:-------|:------------|
+| 🟢 `SET`  | `SET <key> <value>` | Stores a value. Values may contain spaces. |
+| 🔵 `GET`  | `GET <key> [key ...]` | Retrieves one or more values. Missing keys return `(nil)`. |
+| 🔴 `DEL`  | `DEL <key> [key ...]` | Deletes keys and returns the number removed. |
+| 🟣 `MSET` | `MSET <key> <value>, <key> <value>, ...` | Stores multiple key-value pairs in a single command. |
+
+### Example session
+
+```text
 > SET name Karan Shandilya
 OK
 > MSET country India, age 22
@@ -38,73 +39,61 @@ OK
 Karan Shandilya, India, 22
 > DEL country age
 2
-> GET country age
-(nil), (nil)
 ```
 
-## Project Progress
+---
 
-  ---------------------------------------------------------------------------
-  Milestone               What we worked on           Status
-  ----------------------- --------------------------- -----------------------
-  **1. C++ Project        Created the project         Complete
-  Setup**                 structure, initialized Git, 
-                          configured C++17, and set   
-                          up the CMake build.         
+## 🚀 Quick Start
 
-  **2. Understanding      Built the initial in-memory Complete
-  Key-Value Storage**     key-value store using       
-                          `std::unordered_map`, and   
-                          explored how keys and       
-                          values are stored and       
-                          retrieved.                  
+**Requirements:** CMake and a C++17-compatible compiler.
 
-  **3. Object-Oriented    Encapsulated storage        Complete
-  Refactoring**           operations in a             
-                          `KeyValueStore` class with  
-                          `set()`, `get()`, and       
-                          `del()` methods.            
+```bash
+# Configure
+cmake -S . -B build
 
-  **4. Separating Code    Separated the class         Complete
-  into Multiple Files**   declaration into            
-                          `include/KeyValueStore.h`   
-                          and its implementation into 
-                          `src/KeyValueStore.cpp`,    
-                          keeping the application     
-                          entry point in              
-                          `src/main.cpp`.             
+# Build
+cmake --build build
 
-  **5. Better Command     Added multiword values,     Complete
-  Parsing**               multi-key `GET` and `DEL`,  
-                          `MSET`, input validation,   
-                          empty-input handling,       
-                          unknown-command handling,   
-                          and graceful shutdown on    
-                          `EXIT` or EOF.              
+# Run
+./build/CacheForge
+```
 
-  **6. TTL and            Planned: add time-to-live   Planned
-  Expiration**            support so keys can expire  
-                          automatically or when       
-                          accessed after expiry.      
+> [!TIP]
+> Re-run the configure step only when `CMakeLists.txt` changes. For source-code changes, rebuilding is enough.
 
-  **7. Memory Management  Planned: introduce memory   Planned
-  and Eviction**          limits and eviction         
-                          policies such as LRU/LFU.   
+---
 
-  **8. Networking and TCP Planned: allow clients to   Planned
-  Server**                communicate with CacheForge 
-                          over TCP.                   
+## 🗺️ Roadmap
 
-  **9. Concurrency,       Planned: explore concurrent Planned
-  Persistence and         access,                     
-  Distributed Storage**   persistence/recovery, and   
-                          later distributed-storage   
-                          concepts.                   
-  ---------------------------------------------------------------------------
+| # | Milestone | Scope | Status |
+|:-:|:----------|:------|:------:|
+| 1 | **Project Setup** | Project structure, Git, C++17, CMake | ✅ Complete |
+| 2 | **Key-Value Storage** | Initial in-memory store on `std::unordered_map` | ✅ Complete |
+| 3 | **Object-Oriented Refactor** | `KeyValueStore` class with `set()`, `get()`, `del()` | ✅ Complete |
+| 4 | **Multiple Source Files** | Declarations, implementation, and entry point split across `include/` and `src/` | ✅ Complete |
+| 5 | **Command Parsing** | Multiword values, multi-key `GET`/`DEL`, `MSET`, validation, empty-input handling, graceful shutdown | ✅ Complete |
+| 6 | **TTL & Expiration** | Time-to-live and key expiration | 🚧 Next |
+| 7 | **Memory Management & Eviction** | Memory limits, LRU/LFU eviction policies | 📋 Planned |
+| 8 | **Networking & TCP Server** | Client communication with CacheForge over TCP | 📋 Planned |
+| 9 | **Concurrency, Persistence & Distribution** | Concurrent access, persistence/recovery, distributed-storage concepts | 📋 Planned |
 
-## Project Structure
+```mermaid
+flowchart LR
+    A[1 Setup] --> B[2 Storage] --> C[3 OOP] --> D[4 Files] --> E[5 Parsing]
+    E --> F[6 TTL]:::next --> G[7 Eviction] --> H[8 TCP] --> I[9 Persistence]
+    classDef next fill:#F59E0B,stroke:#B45309,color:#000
+    style A fill:#10B981,color:#fff
+    style B fill:#10B981,color:#fff
+    style C fill:#10B981,color:#fff
+    style D fill:#10B981,color:#fff
+    style E fill:#10B981,color:#fff
+```
 
-``` text
+---
+
+## 📁 Project Structure
+
+```text
 CacheForge/
 ├── CMakeLists.txt
 ├── README.md
@@ -117,31 +106,22 @@ CacheForge/
 └── build/
 ```
 
-## Build and Run
+---
 
-Requirements: a C++17-compatible compiler and CMake.
+## ⚠️ Current Limitations
 
-``` bash
-cmake -S . -B build
-cmake --build build
-./build/CacheForge
-```
+- **No persistence:** data lives in memory only and is lost on exit.
+- **Not yet implemented:** TTL, eviction, networking, concurrency, and persistence.
+- **`MSET` and commas:** commas separate pairs, so commas inside values are unsupported.
 
-Re-run the CMake configuration command if `CMakeLists.txt` changes. For
-changes limited to `.cpp` or header files, rebuilding is sufficient.
+---
 
-## Current Limitations
+## 🎯 What's Next
 
--   Data is stored in memory and is lost when the process exits.
--   There is no TTL, eviction policy, persistence, or network interface
-    yet.
--   `MSET` uses commas to separate pairs, so commas are not currently
-    supported inside values.
--   The current store is single-process and does not yet implement
-    concurrent access.
+The next milestone is **TTL and Expiration**, followed by memory management, networking, concurrency, and persistence.
 
-## Direction
+<div align="center">
 
-The goal is to evolve CacheForge incrementally into a more capable
-in-memory key-value store, adding expiration, eviction, networking,
-concurrency, and persistence as the project progresses.
+<sub>Built as a hands-on learning project · Crafted in C++17</sub>
+
+</div>
