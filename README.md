@@ -6,14 +6,6 @@
 
 *Learn C++, storage engines, and backend systems by building a cache from the ground up.*
 
-<br>
-
-![C++17](https://img.shields.io/badge/C%2B%2B-17-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
-![CMake](https://img.shields.io/badge/CMake-build-064F8C?style=for-the-badge&logo=cmake&logoColor=white)
-![Status](https://img.shields.io/badge/status-in%20development-F59E0B?style=for-the-badge)
-![Progress](https://img.shields.io/badge/milestones-5%20of%209-10B981?style=for-the-badge)
-
-[Features](#-features) · [Quick Start](#-quick-start) · [Roadmap](#-roadmap) · [Structure](#-project-structure) · [Limitations](#-current-limitations)
 
 </div>
 
@@ -77,17 +69,6 @@ cmake --build build
 | 8 | **Networking & TCP Server** | Client communication with CacheForge over TCP | 📋 Planned |
 | 9 | **Concurrency, Persistence & Distribution** | Concurrent access, persistence/recovery, distributed-storage concepts | 📋 Planned |
 
-```mermaid
-flowchart LR
-    A[1 Setup] --> B[2 Storage] --> C[3 OOP] --> D[4 Files] --> E[5 Parsing]
-    E --> F[6 TTL]:::next --> G[7 Eviction] --> H[8 TCP] --> I[9 Persistence]
-    classDef next fill:#F59E0B,stroke:#B45309,color:#000
-    style A fill:#10B981,color:#fff
-    style B fill:#10B981,color:#fff
-    style C fill:#10B981,color:#fff
-    style D fill:#10B981,color:#fff
-    style E fill:#10B981,color:#fff
-```
 
 ---
 
